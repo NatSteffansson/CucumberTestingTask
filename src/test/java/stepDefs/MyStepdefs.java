@@ -77,7 +77,7 @@ public class MyStepdefs {
     public void iFillOutTheRegistrationFormWithAnd(String password, String confirmPassword) {
         driver.findElement(By.id("signupunlicenced_password")).sendKeys(password);
         driver.findElement(By.id("signupunlicenced_confirmpassword")).sendKeys(confirmPassword);
-        //click(By.cssSelector("div.caption"));
+        click(By.cssSelector("div.caption"));
 
     }
 
@@ -114,7 +114,7 @@ public class MyStepdefs {
             assertEquals(expected, actual);
         } else {
             String[] expectedErrors = outcome.split(",");
-            List<WebElement> elements = driver.findElements(By.cssSelector("span.warning.field-validation-error[data-valmsg-replace='true']"));
+            List<WebElement> elements = driver.findElements(By.cssSelector("span.warning.field-validation-error[data-valmsg-replace='true']")); //if you delete this part [data-valmsg-replace='true'] in the locator then you get 2 actual errors.
             System.out.println("display errors:" + elements.stream().map(WebElement::getText).toList());
             assertEquals(expectedErrors.length, elements.size());
             for (WebElement element : elements) {
